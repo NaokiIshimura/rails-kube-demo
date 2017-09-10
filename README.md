@@ -13,6 +13,9 @@ Read Part II: Rails on Kubernetes [here](https://medium.com/@jbielick/rails-on-k
 
 # 変更点
 
+## 解説
+[GKEに Rails \+ nginx\(\+Phusion Passenger \) \+ CloudSQL を利用したアプリをデプロイする \- Qiita](http://qiita.com/NaokiIshimura/items/e05a32f79ed202c21ba4)
+
 ## SQLite, PostgreSQLを利用するように修正
 
 config/database.yml
@@ -56,3 +59,8 @@ config/routing.rb
 # root to: 'application#home'
 root to: 'users#index'
 ```
+
+## yamlファイルを追加
+
+- kube/all.yml
+- kube/deploy+service.yml
