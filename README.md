@@ -35,13 +35,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: test_db
-  pool: 5
-  host: <%= ENV['MYSQL_SERVICE_HOST'] %>
-  username: <%= ENV['MYSQL_USER'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+url: postgres://<%= ENV['MYSQL_USER'] %>:<%= ENV['MYSQL_PASSWORD'] %>@<%= ENV['MYSQL_SERVICE_HOST'] %>/test_db
 ```
 
 ## Userモデルを追加
@@ -56,8 +50,22 @@ $ rake db:migrate
 config/routing.rb
 
 ```
-# root to: 'application#home'
-root to: 'users#index'
+get 'application/home'
+root 'users#index'
+```
+
+## Gemfileを書き換え
+
+Gemfile
+
+```
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data'
+```
+
+```
+$ rm Gemfile.lock
+$ bundle install
 ```
 
 ## yamlファイルを追加

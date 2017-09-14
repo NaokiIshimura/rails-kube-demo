@@ -12,10 +12,15 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: test_db
-  pool: 5
-  host: <%= ENV['MYSQL_SERVICE_HOST'] %>
-  username: <%= ENV['MYSQL_USER'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  # PostgreSQL
+  url: postgres://<%= ENV['MYSQL_USER'] %>:<%= ENV['MYSQL_PASSWORD'] %>@<%= ENV['MYSQL_SERVICE_HOST'] %>/test_db
+  # MySQL
+  # (PostgreSQLでこの記法で利用するとGKEデプロイ語にエラー画面が表示される)
+  # adapter: postgresql
+  # adapter: mysql2
+  # encoding: utf8
+  # database: test_db
+  # pool: 5
+  # host: <%= ENV['MYSQL_SERVICE_HOST'] %>
+  # username: <%= ENV['MYSQL_USER'] %>
+  # password: <%= ENV['MYSQL_PASSWORD'] %>

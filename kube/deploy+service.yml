@@ -11,7 +11,7 @@ spec:
         name: my-app
     spec:
       containers:
-        - image: gcr.io/kube-test-179322/my-app:latest
+        - image: gcr.io/[PROJECT_ID]/[IMAGE]:latest
           imagePullPolicy: Always
           name: rails
           env:
@@ -35,7 +35,7 @@ spec:
         - image: b.gcr.io/cloudsql-docker/gce-proxy:1.05
           name: cloudsql-proxy
           command: ["/cloud_sql_proxy", "--dir=/cloudsql",
-                    "-instances=kube-test-179322:us-west1:kube-test-pro=tcp:3306",
+                    "-instances=[INSTANCE_CONNECTION_NAME]=tcp:3306",
                     "-credential_file=/secrets/cloudsql/credentials.json"]
           volumeMounts:
             - name: cloudsql-oauth-credentials
